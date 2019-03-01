@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-import flask
 import functools
 import types
+
+import flask
 from apispec import APISpec
 from apispec.ext.marshmallow import MarshmallowPlugin
 
@@ -79,10 +80,6 @@ class FlaskApiSpec(object):
         json_url = self.app.config.get('APISPEC_SWAGGER_URL', '/swagger/')
         if json_url:
             blueprint.add_url_rule(json_url, 'swagger-json', self.swagger_json)
-
-        ui_url = self.app.config.get('APISPEC_SWAGGER_UI_URL', '/swagger-ui/')
-        if ui_url:
-            blueprint.add_url_rule(ui_url, 'swagger-ui', self.swagger_ui)
 
         self.app.register_blueprint(blueprint)
 
